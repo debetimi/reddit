@@ -20,7 +20,8 @@
     #"\d+\^" (comp print string/capitalize)
     #"\d+" (comp print string/lower-case)))
 
-(defn get-index [cmd]
+(defn get-index 
+  [cmd]
   "Extract the index from command and convert to integer"
   (read-string (last (re-matches #"(\d+).*" cmd))))
 
