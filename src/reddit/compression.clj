@@ -52,3 +52,13 @@
             (if (and @add-space? (not= 0 i)) (print " "))
             (set-and-print printfn word add-space? true))))
       (swap! i inc))))
+
+
+(comment 
+  I do not like them in a house.
+  I do not like them with a mouse.
+  I do not like them here or there.
+  I do not like them anywhere.
+  I do not like green eggs and ham.
+  I do not like them, Sam-I-am.
+  nil)
