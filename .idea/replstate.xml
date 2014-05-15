@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ReplState" timestamp="1398831215697">{:repl-history {:ide [], :local [&quot;solve-by-sides&quot; &quot;state&quot; &quot;(swap! info assoc :a read-string)&quot; &quot;info&quot; &quot;(:K @info)&quot; &quot;(sorted-map &gt; @info)&quot; &quot;(into (sorted-map) my-map)&quot; &quot;(into (sorted-map) @info)&quot; &quot;even?&quot; &quot;(cond 0)&quot; &quot;(cond 0\n      even? \&quot;foo\&quot;\n      even? \&quot;bar\&quot;)&quot; &quot;(cond 0\n      even? \&quot;foo\&quot;\n      even? \&quot;bar\&quot;\n      \&quot;ddd\&quot;)&quot; &quot;(solve-by-sines)&quot; &quot;@info&quot;], :remote []}}</component>
+</project>
+
