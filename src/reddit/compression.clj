@@ -1,6 +1,9 @@
 (ns reddit.compression
   (:require [clojure.string :as string]))
 
+;; Question
+;; http://www.reddit.com/r/dailyprogrammer/comments/25clki/5122014_challenge_162_easy_novel_compression_pt_1/
+
 (def input-file "resources/reader.txt")
 
 (defn get-data 
@@ -36,10 +39,10 @@
         i (atom 0)
         add-space? (atom false)
         continue (atom true)]
-    (while continue 
+    (while @continue 
       (let [cmd (get commands @i)]
         (condp re-matches cmd
-          #"[eE]" (swap! continue false)
+          #"[eE]" (swap! continue not)
           #"-" (set-and-print print "-" add-space? false) 
           #"[\.\!\,\?\;\:]" (print cmd)
           #"[rR]" (set-and-print println "" add-space? false)
