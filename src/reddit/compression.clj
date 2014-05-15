@@ -50,7 +50,7 @@
           (let [printfn (get-fn cmd)
                 idx (get-index cmd)
                 word (get words idx)]
-            (if (and @add-space? (not= 0 i)) (print " "))
+            (if @add-space? (print " "))
             (set-and-print printfn word add-space? true))))
       (swap! i inc))))
 
