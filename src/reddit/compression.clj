@@ -17,6 +17,10 @@
   []
   (split (s/replace (slurp input-file) #"\n" " \n ") #"[^\S+\n]"))
 
+(defn add-compression
+  [cmp]
+  (swap! compressions conj str cmp))
+
 (defn extract
   [phrase regex]
   (let [matches (re-matches regex phrase)
@@ -27,11 +31,11 @@
       (swap! dictionary conj word))
     (let [idx (word @lookup)]
       (condp = regex 
-        uppercased (swap! compressions conj (str idx "!"))
-        capitalized (swap! compressions conj (str idx "^"))
-        lowercased (swap! compressions conj (str idx)))
+        uppercased (add-compression (str idx "!"))
+        capitalized (add-compression (str idx "^"))
+        lowercased (add-compression (str idx)))
       (if-not (empty? punc)
-        (swap! compressions conj punc)))))
+        (add-compression punc)))))
 
 (defn compress
   []
@@ -41,9 +45,9 @@
               uppercased (extract phrase uppercased)
               capitalized (extract phrase capitalized) 
               lowercased (extract phrase lowercased)
-              #"\n" (swap! compressions conj "R") 
+              #"\n" (add-compression "R") 
               (throw (IllegalArgumentException. (str "Invalid Option " phrase)))))
-    (swap! compressions conj "E")
+    (add-compression "E")
     (let [dict-str (s/join "\n" (map name @dictionary))
           compression-str (s/join " " @compressions)]
       (spit output-file (s/join "\n" [(count @dictionary) dict-str compression-str])))))
