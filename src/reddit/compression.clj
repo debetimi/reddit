@@ -15,7 +15,8 @@
 
 (defn get-data
   []
-  (split (s/replace (slurp input-file) #"\n" " \n ") #"[^\S+\n]"))
+  (-> (slurp input-file) (s/replace #"\n" " \n ")
+      (s/replace #"\-" " - ") (split #"[^\S+\n]")))
 
 (defn add-compression
   [cmp]
@@ -45,7 +46,8 @@
               uppercased (extract phrase uppercased)
               capitalized (extract phrase capitalized) 
               lowercased (extract phrase lowercased)
-              #"\n" (add-compression "R") 
+              #"\n" (add-compression "R")
+              #"\-" (add-compression "-")
               (throw (IllegalArgumentException. (str "Invalid Option " phrase)))))
     (add-compression "E")
     (let [dict-str (s/join "\n" (map name @dictionary))
