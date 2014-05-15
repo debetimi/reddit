@@ -38,11 +38,11 @@
         commands (-> data rest vec (subvec num-words))
         i (atom 0)
         add-space? (atom false)
-        continue (atom true)]
-    (while @continue 
+        continue? (atom true)]
+    (while @continue? 
       (let [cmd (get commands @i)]
         (condp re-matches cmd
-          #"[eE]" (swap! continue not)
+          #"[eE]" (swap! continue? not)
           #"-" (set-and-print print "-" add-space? false) 
           #"[\.\!\,\?\;\:]" (print cmd)
           #"[rR]" (set-and-print println "" add-space? false)
