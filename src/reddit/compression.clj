@@ -4,7 +4,7 @@
 
 ;http://www.reddit.com/r/dailyprogrammer/comments/25hlo9/5142014_challenge_162_intermediate_novel/
 
-(def input-file "resources/story.txt")
+(def input-file "resources/decompressed.txt")
 (def output-file "resources/recompressed.txt")
 (def dictionary (atom []))
 (def lookup (atom {}))
@@ -20,7 +20,7 @@
 
 (defn add-compression
   [cmp]
-  (swap! compressions conj str cmp))
+  (swap! compressions conj cmp))
 
 (defn extract
   [phrase regex]

@@ -6,7 +6,7 @@
 ;; http://www.reddit.com/r/dailyprogrammer/comments/25clki/5122014_challenge_162_easy_novel_compression_pt_1/
 
 (def input-file "resources/recompressed.txt")
-(def out-file "resources/decompressed.txt")
+(def out-file "resources/decompressed2.txt")
 
 (def out (atom []))
 
