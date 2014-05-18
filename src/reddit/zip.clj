@@ -103,7 +103,7 @@
 (defn compress
   [input output]
   (let [data (read-raw input)]
-    (doseq [phrase (filter #(not= % "") data)]
+    (doseq [phrase (filter not-empty data)]
       (condp re-matches phrase 
         uppercased (extract phrase uppercased)
         capitalized (extract phrase capitalized) 
